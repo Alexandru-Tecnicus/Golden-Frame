@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofoliu & Prețuri - Golden Frame Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">GOLDEN FRAME</div>
+        <nav class="nav-links">
+            <a href="index.html">Acasă</a>
+            <a href="despre.html">Despre noi</a>
+            <a href="portofoliu.html" class="active">Portofoliu</a>
+            <a href="echipa.html">Echipa</a>
+        </nav>
+    </header>
+
+    <section class="portfolio-section">
+        <div class="portfolio-header animate-up">
+            <span class="subtitle">GALERIE & TARIFE</span>
+            <h2>Alege un serviciu pentru a vedea <span class="gold-text">prețurile</span></h2>
+        </div>
+
+        <div class="portfolio-grid animate-up delay-1">
+            <!-- Card Nuntă -->
+            <div class="portfolio-item" onclick="deschidePreturi('nunta')">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Nuntă">
+                <div class="overlay">
+                    <span>Nuntă</span>
+                    <p>Click pentru lista de prețuri</p>
+                </div>
+            </div>
+
+            <!-- Card Botez -->
+            <div class="portfolio-item" onclick="deschidePreturi('botez')">
+                <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=800&auto=format&fit=crop" alt="Botez">
+                <div class="overlay">
+                    <span>Botez</span>
+                    <p>Click pentru lista de prețuri</p>
+                </div>
+            </div>
+
+            <!-- Card Ședință Foto (Poză înlocuită) -->
+            <div class="portfolio-item" onclick="deschidePreturi('sedinta')">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Ședință foto">
+                <div class="overlay">
+                    <span>Ședință Foto</span>
+                    <p>Click pentru lista de prețuri</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fereastra pop-up pentru prețuri -->
+    <div id="priceModal" class="modal" onclick="inchidePreturiFundal(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="inchidePreturi()">&times;</span>
+            <h3 id="modalTitle">Titlu Serviciu</h3>
+            <ul id="modalList" class="price-list"></ul>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Golden Frame Studio. Toate drepturile rezervate.</p>
+    </footer>
+
+    <!-- Cod JavaScript pentru afișarea listei de prețuri -->
+    <script>
+        const pachete = {
+            nunta: {
+                titlu: "Pachete Foto-Video Nuntă",
+                lista: [
+                    "<strong>Pachet Silver (3.500 RON):</strong> Fotograf prezent pe toată durata evenimentului, 600+ fotografii editate, galerie online privată.",
+                    "<strong>Pachet Gold (5.500 RON):</strong> Fotograf + Videograf 4K, clip highlight (3-5 min), filmul complet al nunții, ședință foto în ziua evenimentului.",
+                    "<strong>Pachet Diamond (7.500 RON):</strong> Echipă completă + Filmare cu Drona, album foto premium din piele, ședință Trash the Dress."
+                ]
+            },
+            botez: {
+                titlu: "Pachete Foto-Video Botez",
+                lista: [
+                    "<strong>Pachet Esențial (1.800 RON):</strong> Fotograf prezent la biserică și restaurant, 300+ fotografii editate profesional.",
+                    "<strong>Pachet Complet (3.000 RON):</strong> Fotograf + Videograf, clip rezumat al evenimentului + filmare integrală, stick USB personalizat.",
+                    "<strong>Pachet VIP (4.200 RON):</strong> Foto + Video + Dronă, album foto cartonat, ședință foto cu bebe acasă înainte de biserică."
+                ]
+            },
+            sedinta: {
+                titlu: "Tarife Ședințe Foto",
+                lista: [
+                    "<strong>Ședință Portret / Solo (450 RON):</strong> 1 oră în locație aleasă, 35 de fotografii editate în detaliu.",
+                    "<strong>Ședință de Cuplu / Save the Date (700 RON):</strong> 2 ore la apus, 2 ținute, 70+ fotografii editate.",
+                    "<strong>Ședință Familie / Maternitate (850 RON):</strong> 2 ore în natură sau studio, 80+ fotografii + 10 printuri cadou."
+                ]
+            }
+        };
+
+        function deschidePreturi(categorie) {
+            const modal = document.getElementById("priceModal");
+            const titlu = document.getElementById("modalTitle");
+            const lista = document.getElementById("modalList");
+
+            titlu.innerText = pachete[categorie].titlu;
+            lista.innerHTML = "";
+
+            pachete[categorie].lista.forEach(item => {
+                const li = document.createElement("li");
+                li.innerHTML = item;
+                lista.appendChild(li);
+            });
+
+            modal.style.display = "flex";
+        }
+
+        function inchidePreturi() {
+            document.getElementById("priceModal").style.display = "none";
+        }
+
+        function inchidePreturiFundal(event) {
+            if (event.target === document.getElementById("priceModal")) {
+                inchidePreturi();
+            }
+        }
+    </script>
+</body>
+</html>

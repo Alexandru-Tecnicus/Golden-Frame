@@ -1,0 +1,544 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #e0e0e0;
+    background-color: #0b0b0b;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.gold-text {
+    color: #d4af37;
+    font-style: italic;
+}
+
+.subtitle {
+    display: block;
+    color: #d4af37;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* === ANIMAȚII === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+
+.animate-up {
+    animation: fadeInUp 0.9s ease-out forwards;
+}
+
+.delay-1 {
+    opacity: 0;
+    animation: fadeInUp 0.9s ease-out 0.3s forwards;
+}
+
+/* === NAVBAR === */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(11, 11, 11, 0.92);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    color: #d4af37;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #d4af37;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #d4af37;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+/* === SECȚIUNEA HERO (ACASĂ) === */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    animation: slowZoom 15s infinite alternate ease-in-out;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(11,11,11,0.5) 0%, rgba(11,11,11,0.92) 100%);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 850px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.6rem;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: #ccc;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.btn-gold {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(45deg, #b8860b, #d4af37, #f3e5ab);
+    color: #0b0b0b;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-gold:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+}
+
+/* === SECȚIUNEA DESPRE NOI === */
+.about-section {
+    padding: 140px 6% 80px 6%;
+    background-color: #0b0b0b;
+    min-height: 100vh;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-size: 1.05rem;
+    color: #b5b5b5;
+    margin-bottom: 15px;
+}
+
+.about-features {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.about-features li {
+    font-size: 1rem;
+    color: #d4af37;
+    margin-bottom: 12px;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.about-features li:hover {
+    transform: translateX(8px);
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    transition: transform 0.4s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.02);
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 70px auto 0;
+    background-color: #141414;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.stat-box {
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-6px);
+}
+
+.stat-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    color: #d4af37;
+    margin-bottom: 5px;
+}
+
+.stat-box p {
+    font-size: 0.9rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* === SECȚIUNEA PORTOFOLIU === */
+.portfolio-section {
+    padding: 140px 6% 80px 6%;
+    text-align: center;
+    background-color: #0b0b0b;
+    min-height: 100vh;
+}
+
+.portfolio-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.portfolio-item:hover {
+    border-color: #d4af37;
+    transform: translateY(-5px);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(11, 11, 11, 0.95) 0%, rgba(11, 11, 11, 0.3) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.overlay span {
+    color: #d4af37;
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    transform: translateY(15px);
+    transition: transform 0.4s ease;
+}
+
+.overlay p {
+    color: #ddd;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    transform: translateY(15px);
+    transition: transform 0.4s ease 0.1s;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.12);
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+
+.portfolio-item:hover .overlay span,
+.portfolio-item:hover .overlay p {
+    transform: translateY(0);
+}
+
+/* === SUBSOLUL PAGINII (FOOTER) === */
+.footer {
+    background-color: #070707;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+    text-align: center;
+    padding: 25px 5%;
+    color: #888;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* === FEREASTRA POP-UP PENTRU PREȚURI (MODAL) === */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #141414;
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #aaa;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #d4af37;
+}
+
+.modal-content h3 {
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.price-list {
+    list-style: none;
+    text-align: left;
+}
+
+.price-list li {
+    background-color: #0b0b0b;
+    border-left: 3px solid #d4af37;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    color: #ddd;
+    font-size: 0.95rem;
+}
+
+.price-list li strong {
+    color: #d4af37;
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+/* === SECȚIUNEA ECHIPA (echipa.html) === */
+.team-section {
+    padding: 140px 6% 80px 6%;
+    text-align: center;
+    background-color: #0b0b0b;
+    min-height: 100vh;
+}
+
+.team-header {
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.team-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.team-header p {
+    color: #b5b5b5;
+    font-size: 1.05rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background-color: #141414;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: #d4af37;
+}
+
+.team-img-wrapper {
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+}
+
+.team-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.team-card:hover .team-img-wrapper img {
+    transform: scale(1.08);
+}
+
+.team-info {
+    padding: 25px 20px;
+}
+
+.team-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.team-info .role {
+    display: block;
+    color: #d4af37;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.team-info p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
